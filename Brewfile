@@ -8,6 +8,7 @@ brew "go"
 brew "n"
 brew "ripgrep"
 brew "rustup-init"
+brew "tree"
 brew "zplug", args: ["HEAD"]
 brew "kylef/formulae/swiftenv"
 cask "docker"
