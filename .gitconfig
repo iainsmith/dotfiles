@@ -1,2 +1,5 @@
 [init]
 	defaultBranch = main
+
+[includeIf "gitdir:~/Developer/work/"]
+	path = ~/Developer/work/.gitconfig-work
