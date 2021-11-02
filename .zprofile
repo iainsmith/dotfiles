@@ -5,3 +5,6 @@ fi
 . "$HOME/.cargo/env"
 
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+
+export N_PREFIX="$HOME/.n"
+PATH=$PATH:"$HOME/.n/bin"
