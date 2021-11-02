@@ -3,3 +3,17 @@
 
 [includeIf "gitdir:~/Developer/work/"]
 	path = ~/Developer/work/.gitconfig-work
+
+[gpg]
+	program = gpg
+
+[commit]
+	gpgsign = true
+
+[user]
+	name = Iain Smith
+	email = iainsmith@users.noreply.github.com
+	signingkey = "Iain Smith <iainsmith@users.noreply.github.com>"
+
+[push]
+	default = current
