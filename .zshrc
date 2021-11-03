@@ -7,7 +7,8 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 
 zplug '~/.scripts/bundler', from:local
-zplug '~/.scripts/swift', from:local
+zplug '~/.scripts/swift',   from:local
+zplug '~/.scripts/history', from:local
 
 zplug 'dracula/zsh', as:theme
 
