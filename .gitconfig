@@ -35,6 +35,7 @@
 
 [pull]
 	rebase = true
+	default = current
 
 [includeIf "gitdir:~/Developer/work/"]
 	path = ~/Developer/work/.gitconfig-work
