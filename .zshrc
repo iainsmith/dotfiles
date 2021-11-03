@@ -1,6 +1,13 @@
 export ZPLUG_HOME="$HOMEBREW_PREFIX/opt/zplug"
 source $ZPLUG_HOME/init.zsh
 
+setopt auto_cd
+setopt cdable_vars
+
+cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work)
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/cargo",  from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
