@@ -23,6 +23,8 @@ if ! zplug check --verbose; then
     zplug install
 fi
 
+bindkey -v # Enable vim mode
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
