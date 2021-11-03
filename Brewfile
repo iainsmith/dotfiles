@@ -16,4 +16,5 @@ brew "zplug", args: ["HEAD"]
 brew "kylef/formulae/swiftenv"
 cask "docker"
 cask "iterm2"
+cask "sourcetree"
 cask "visual-studio-code"
