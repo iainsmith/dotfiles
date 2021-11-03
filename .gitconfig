@@ -22,6 +22,10 @@
 	signingkey = "Iain Smith <iainsmith@users.noreply.github.com>"
 
 [branch]
+	# https://git-scm.com/docs/git-config#Documentation/git-config.txt-branchautoSetupMerge
+	# --track by default
+	autosetupmerge = always
+	autoSetupRebase = always
 	sort = -committerdate # Most recent first
 
 [push]
