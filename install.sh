@@ -19,5 +19,13 @@ function installHomebrew {
     brew bundle
 }
 
+function writeSwiftCompletion {
+    local SWIFT_COMPLETION="$HOME/.scripts/swift"
+    rm -rf "$SWIFT_COMPLETION"
+    mkdir -p "$SWIFT_COMPLETION"
+    swift package completion-tool generate-zsh-script > "$SWIFT_COMPLETION/_swift"
+}
+
 installHomebrew
 installM1
+writeSwiftCompletion
