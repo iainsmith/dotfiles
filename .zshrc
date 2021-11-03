@@ -28,4 +28,13 @@ bindkey -v # Enable vim mode
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# LSD
+alias l="ls -a"
+alias ls="lsd"
+alias lt="lsd --tree"
+
+# Bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias cat="bat"
+
 zplug load

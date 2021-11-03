@@ -1,0 +1,5 @@
+icons:
+  when: never
+layout: grid
+sorting:
+  dir-grouping: first
