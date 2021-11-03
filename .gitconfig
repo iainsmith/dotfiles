@@ -1,8 +1,14 @@
 [init]
 	defaultBranch = main
 
-[includeIf "gitdir:~/Developer/work/"]
-	path = ~/Developer/work/.gitconfig-work
+[core]
+	# Make `git rebase` safer on macOS.
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
 
 [gpg]
 	program = gpg
@@ -15,5 +21,20 @@
 	email = iainsmith@users.noreply.github.com
 	signingkey = "Iain Smith <iainsmith@users.noreply.github.com>"
 
+[branch]
+	sort = -committerdate # Most recent first
+
 [push]
 	default = current
+
+[apply]
+	whitespace = fix
+
+[help]
+	autocorrect = true
+
+[pull]
+	rebase = true
+
+[includeIf "gitdir:~/Developer/work/"]
+	path = ~/Developer/work/.gitconfig-work
