@@ -8,6 +8,8 @@ cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work)
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+export GEM_HOME="$HOME/.gems"
+
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/cargo",  from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
