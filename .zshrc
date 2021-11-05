@@ -14,6 +14,7 @@ zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/cargo",  from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "keith/zsh-xcode-completions", use:"src"
 
 zplug '~/.scripts/bundler', from:local
 zplug '~/.scripts/swift',   from:local
@@ -38,5 +39,7 @@ alias lt="lsd --tree"
 # Bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias cat="bat"
+
+eval "$(rbenv init - zsh)"
 
 zplug load
