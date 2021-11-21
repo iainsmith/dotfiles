@@ -4,7 +4,12 @@ source $ZPLUG_HOME/init.zsh
 setopt auto_cd
 setopt cdable_vars
 
-cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work)
+export EDITOR="nvim"
+
+export GOPATH="$HOME/Developer/personal/go"
+PATH="$GOPATH/bin:$PATH"
+
+cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work $HOME/Developer)
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
@@ -43,3 +48,5 @@ alias cat="bat"
 eval "$(rbenv init - zsh)"
 
 zplug load
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
