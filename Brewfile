@@ -17,7 +17,6 @@ brew "rustup-init"
 brew "tree"
 brew "xclogparser"
 brew "zplug", args: ["HEAD"]
-brew "kylef/formulae/swiftenv"
 cask "docker"
 cask "iterm2"
 cask "proxyman"

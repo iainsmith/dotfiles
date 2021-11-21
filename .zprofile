@@ -6,8 +6,6 @@ fi
 
 . "$HOME/.cargo/env"
 
-if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
-
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 export N_PREFIX="$HOME/.n"
