@@ -23,6 +23,7 @@ zplug "keith/zsh-xcode-completions", use:"src"
 
 zplug '~/.scripts/bundler', from:local
 zplug '~/.scripts/swift',   from:local
+zplug '~/.scripts/ripgrep', from:local
 zplug '~/.scripts/history', from:local
 
 zplug 'dracula/zsh', as:theme
