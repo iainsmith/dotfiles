@@ -17,6 +17,7 @@ export GEM_HOME="$HOME/.gems"
 
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/cargo",  from:oh-my-zsh
+zplug "plugins/macos",  from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "keith/zsh-xcode-completions", use:"src"
@@ -26,7 +27,13 @@ zplug '~/.scripts/swift',   from:local
 zplug '~/.scripts/ripgrep', from:local
 zplug '~/.scripts/history', from:local
 
-zplug 'dracula/zsh', as:theme
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zstyle :prompt:pure:path color white
+zstyle :prompt:pure:git:stash show yes
+
+zplug 'mafredri/zsh-async', from:github
+zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
 
 if ! zplug check --verbose; then
     zplug install
