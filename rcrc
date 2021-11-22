@@ -1,2 +1,3 @@
-EXCLUDES="README.md"
-COPY_ALWAYS="git_template/HEAD"
+EXCLUDES="README.md install.sh"
+UNDOTTED="Brewfile"
+COPY_ALWAYS="gnupg/gpg.conf"
