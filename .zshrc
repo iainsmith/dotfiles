@@ -49,6 +49,8 @@ alias l="ls -a"
 alias ls="lsd"
 alias lt="lsd --tree"
 
+alias gls="git ls-files"
+
 # Bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias cat="bat"
