@@ -49,10 +49,6 @@ alias l="ls -a"
 alias ls="lsd"
 alias lt="lsd --tree"
 
-alias gls="git ls-files"
-alias gcm="git commit --message"
-alias gap="git add --patch"
-
 # Bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias cat="bat"
@@ -62,3 +58,7 @@ eval "$(rbenv init - zsh)"
 zplug load
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias gls="git ls-files"
+alias gcm="git commit --message"
+alias gap="git add --patch"
