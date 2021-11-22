@@ -31,6 +31,7 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 
 let mapleader = " " " map leader to Space
 nnoremap <leader>0 :NERDTreeToggle<CR>
+nnoremap <leader>o :FZF<CR>
 
 :tnoremap <Esc> <C-\><C-n>
 
