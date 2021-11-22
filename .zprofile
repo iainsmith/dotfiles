@@ -5,6 +5,7 @@ else
 fi
 
 . "$HOME/.cargo/env"
+[ ! -f "$HOME/.env.local" ] || . "$HOME/.env.local"
 
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
