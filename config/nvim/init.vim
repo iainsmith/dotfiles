@@ -69,6 +69,8 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
   Plug 'hrsh7th/vim-vsnip'
   Plug 'hrsh7th/vim-vsnip-integ'
+
+  Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 set completeopt=menu,menuone,noselect

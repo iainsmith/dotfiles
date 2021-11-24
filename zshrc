@@ -64,7 +64,7 @@ alias gcm="git commit --message"
 alias gap="git add --patch"
 
 alias tm="tmux"
-alias tmn="tmux new session -t"
+alias tmn="tmux new-session -t"
 alias tma="tmux attach"
 alias tmls="tmux list-session"
 alias tmx="tmux kill-session"
