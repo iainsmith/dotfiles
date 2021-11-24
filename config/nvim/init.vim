@@ -34,6 +34,9 @@ let mapleader = " " " map leader to Space
 
 nnoremap <leader>0 :NERDTreeToggle<CR>
 nnoremap <leader>o :GitFiles<CR>
+nnoremap <Leader>ve :e $MYVIMRC<CR>
+nnoremap <Leader>vr :source $MYVIMRC<CR>
+nnoremap <Leader>x :q<CR>
 
 :tnoremap <Esc> <C-\><C-n>
 
