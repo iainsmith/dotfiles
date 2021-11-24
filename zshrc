@@ -62,6 +62,11 @@ zplug load
 alias gls="git ls-files"
 alias gcm="git commit --message"
 alias gap="git add --patch"
+alias gs="git stash"
+alias gss="git stash show"
+alias gsl="git stash list"
+alias gsa="git stash apply"
+alias gsk="git stash --keep"
 
 alias tm="tmux"
 alias tmn="tmux new-session -t"
@@ -70,3 +75,4 @@ alias tmls="tmux list-session"
 alias tmx="tmux kill-session"
 alias tmc="tmux kill-session"
 
+alias reload="source $HOME/.zshrc"
