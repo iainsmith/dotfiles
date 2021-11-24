@@ -62,3 +62,11 @@ zplug load
 alias gls="git ls-files"
 alias gcm="git commit --message"
 alias gap="git add --patch"
+
+alias tm="tmux"
+alias tmn="tmux new session -t"
+alias tma="tmux attach"
+alias tmls="tmux list-session"
+alias tmx="tmux kill-session"
+alias tmc="tmux kill-session"
+
