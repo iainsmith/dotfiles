@@ -20,7 +20,8 @@ syntax enable
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-
+" automatically resize windows on vim resize
+autocmd VimResized * :wincmd =
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
@@ -38,7 +39,11 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 nnoremap <Leader>x :q<CR>
 
-:tnoremap <Esc> <C-\><C-n>
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+tnoremap <Esc> <C-\><C-n>
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'pbrisbin/vim-mkdir'
