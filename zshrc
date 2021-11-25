@@ -4,6 +4,8 @@ source $ZPLUG_HOME/init.zsh
 setopt auto_cd
 setopt cdable_vars
 
+unsetopt BEEP
+
 export EDITOR="nvim"
 
 export GOPATH="$HOME/Developer/personal/go"
@@ -27,6 +29,7 @@ zplug '~/.scripts/swift',   from:local
 zplug '~/.scripts/ripgrep', from:local
 zplug '~/.scripts/history', from:local
 
+zplug "Aloxaf/fzf-tab", from:github
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zstyle :prompt:pure:path color white
