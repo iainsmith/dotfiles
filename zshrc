@@ -81,3 +81,4 @@ alias tmc="tmux kill-session"
 source ~/.scripts/utils/utils.zsh
 
 alias reload="source $HOME/.zshrc"
+alias gdmain="git diff origin/main"
