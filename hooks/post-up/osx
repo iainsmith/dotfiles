@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Always open everything in Finder's list view
+defaults write com.apple.finder FXPreferredViewStyle "Nlsv"
+defaults write com.apple.finder FXPreferredSearchViewStyle "Nlsv"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
