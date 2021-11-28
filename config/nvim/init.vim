@@ -53,6 +53,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-obsession'
 
   Plug 'EdenEast/nightfox.nvim'
 
