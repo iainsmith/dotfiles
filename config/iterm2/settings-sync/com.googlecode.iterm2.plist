@@ -689,7 +689,7 @@
 		</dict>
 	</dict>
 	<key>RightOption</key>
-	<integer>1</integer>
+	<integer>3</integer>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>SoundForEsc</key>
