@@ -10,4 +10,4 @@ fi
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 export N_PREFIX="$HOME/.n"
-PATH=$PATH:"$HOME/.n/bin"
+PATH="$HOME/.n/bin":$PATH
