@@ -43,6 +43,9 @@ nnoremap <Leader>x :q<CR>
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
+nnoremap <leader>\ :vsplit<cr>
+nnoremap <leader>- :split<cr>
+
 tnoremap <Esc> <C-\><C-n>
 
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
