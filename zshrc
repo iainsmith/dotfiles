@@ -73,10 +73,10 @@ alias gsk="git stash --keep"
 
 alias tm="tmux"
 alias tmn="tmux new-session -t"
-alias tma="tmux attach"
+alias tma="tmux attach -t"
 alias tmls="tmux list-session"
-alias tmx="tmux kill-session"
-alias tmc="tmux kill-session"
+alias tmx="tmux kill-session -t"
+alias tmc="tmux kill-session -t"
 
 alias lzd="lazydocker"
 
