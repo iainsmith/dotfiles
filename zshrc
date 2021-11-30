@@ -78,6 +78,8 @@ alias tmls="tmux list-session"
 alias tmx="tmux kill-session"
 alias tmc="tmux kill-session"
 
+alias lzd="lazydocker"
+
 source ~/.scripts/utils/utils.zsh
 
 alias reload="source $HOME/.zshrc"
