@@ -10,6 +10,7 @@ export EDITOR="nvim"
 
 export GOPATH="$HOME/Developer/personal/go"
 PATH="$GOPATH/bin:$PATH"
+PATH="$PATH:/Users/iain/.local/bin"
 
 cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work $HOME/Developer)
 
@@ -82,6 +83,20 @@ alias ld="lazydocker"
 alias lg="lazygit"
 
 source ~/.scripts/utils/utils.zsh
+source ~/.scripts/utils/tat
+PATH=$PATH:~/.scripts/utils/
+
 
 alias reload="source $HOME/.zshrc"
 alias gdmain="git diff origin/main"
+
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
+

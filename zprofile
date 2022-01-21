@@ -11,3 +11,5 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 export N_PREFIX="$HOME/.n"
 PATH="$HOME/.n/bin":$PATH
+
+export PATH="$PATH:/Users/iain/.local/bin"
