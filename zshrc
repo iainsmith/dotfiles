@@ -71,6 +71,9 @@ alias gss="git stash show"
 alias gsl="git stash list"
 alias gsa="git stash apply"
 alias gsk="git stash --keep"
+alias grsp="git restore --patch"
+alias gcn="git commit --verbose --no-edit --amend"
+alias gcan="git commit --verbose --all --no-edit --amend"
 
 alias tm="tmux"
 alias tmn="tmux new-session -t"
@@ -81,6 +84,7 @@ alias tmc="tmux kill-session -t"
 
 alias ld="lazydocker"
 alias lg="lazygit"
+alias aliases="nvim ~/.dotfiles/zshrc"
 
 source ~/.scripts/utils/utils.zsh
 source ~/.scripts/utils/tat
@@ -88,7 +92,8 @@ PATH=$PATH:~/.scripts/utils/
 
 
 alias reload="source $HOME/.zshrc"
-alias gdmain="git diff origin/main"
+alias gdmain="git diff origin/main --staged"
+alias gdmaster="git diff origin/master --staged"
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
