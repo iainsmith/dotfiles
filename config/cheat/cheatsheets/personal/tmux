@@ -1,0 +1,45 @@
+# To zoom into a pane
+Ctrl-a z
+
+# Clear history
+Ctrl-a k
+
+# Enter copy mode
+Ctrl-a [
+
+# To switch session
+Ctrl-a s
+
+# To display session:
+tmls
+
+# To rename session:
+Ctrl-a $
+
+# To help screen (Q to quit):
+Ctrl-a ?
+
+# To reload configuration file
+Ctrl-a r
+
+# To create a window:
+Ctrl-a c
+
+# To go next window:
+Ctrl-a n
+
+# To destroy a window:
+Ctrl-a x
+
+# To switch between windows:
+Ctrl-a [1-9]
+
+# To split windows horizontally:
+Ctrl-a %
+
+# To split windows vertically:
+Ctrl-a "
+
+# Useful Links
+https://thoughtbot.com/upcase/tmux
+https://github.com/christoomey/dotfiles/blob/master/tmux/tmux.conf
