@@ -72,8 +72,10 @@ alias gsl="git stash list"
 alias gsa="git stash apply"
 alias gsk="git stash --keep"
 alias grsp="git restore --patch"
+alias grstp="git restore --staged --patch"
 alias gcn="git commit --verbose --no-edit --amend"
 alias gcan="git commit --verbose --all --no-edit --amend"
+alias gcnd='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
 
 alias tm="tmux"
 alias tmn="tmux new-session -t"
