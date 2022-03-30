@@ -33,6 +33,7 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 " Leader mapping
 let mapleader = " " " map leader to Space
 
+noremap ; :
 nnoremap <leader>0 :NERDTreeToggle<CR>
 nnoremap <leader>o :GitFiles<CR>
 nnoremap <Leader>ve :e $MYVIMRC<CR>
