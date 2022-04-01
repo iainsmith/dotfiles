@@ -1,3 +1,6 @@
+# Use system git
+defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
+
 # Trim trailing whitespace
 defaults write com.apple.dt.Xcode DVTTextEditorTrimTrailingWhitespace -bool true
 
