@@ -19,7 +19,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 export GEM_HOME="$HOME/.gems"
 
 zplug "plugins/git",    from:oh-my-zsh
-zplug "plugins/cargo",  from:oh-my-zsh
+zplug "plugins/rust",   from:oh-my-zsh
 zplug "plugins/macos",  from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
