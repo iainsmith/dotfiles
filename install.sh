@@ -37,7 +37,21 @@ function writeSwiftCompletion {
     swift package completion-tool generate-zsh-script > "$SWIFT_COMPLETION/_swift"
 }
 
+function printManualInstructions {
+    echo "Next steps:
+- Setup an SSH key:
+
+  ssh-keygen -t ed25519 -C "email.com"
+
+- Import gpg keys:
+
+  gpg --import ~/path-to-key
+  gpg edit-key {key-id} trust
+"
+}
+
 bootstrapXcodes
 installHomebrew
 installM1
 writeSwiftCompletion
+printManualInstructions
