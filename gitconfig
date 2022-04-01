@@ -39,7 +39,7 @@
 	whitespace = fix
 
 [help]
-	autocorrect = true
+	autocorrect = 20
 
 [pull]
 	rebase = true
