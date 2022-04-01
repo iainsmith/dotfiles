@@ -5,6 +5,17 @@ function installRosetta {
     fi
 }
 
+function bootstrapXcodes {
+    if ! command -v xcodebuild &> /dev/null
+    then
+        mkdir /tmp/xcodes
+        curl -fsSL https://github.com/RobotsAndPencils/xcodes/releases/latest/download/xcodes.zip -o /tmp/xcodes/xcodes.zip
+        unzip -d /tmp/xcodes /tmp/xcodes/xcodes.zip
+        /tmp/xcodes/xcodes install --latest
+        rm -rf /tmp/xcodes
+    fi
+}
+
 function installM1 {
     if [[ `uname` == "Darwin" && `uname -m` == "arm64" ]]; then
         installRosetta
@@ -26,6 +37,7 @@ function writeSwiftCompletion {
     swift package completion-tool generate-zsh-script > "$SWIFT_COMPLETION/_swift"
 }
 
+bootstrapXcodes
 installHomebrew
 installM1
 writeSwiftCompletion
