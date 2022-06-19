@@ -95,6 +95,8 @@ PATH=$PATH:~/.scripts/utils/
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
+export GIT_PILE_PREFIX="iain/"
+
 alias reload="source $HOME/.zshrc"
 alias gdmain="git diff origin/main --staged"
 alias gdmaster="git diff origin/master --staged"
