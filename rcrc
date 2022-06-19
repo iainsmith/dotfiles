@@ -1,3 +1,7 @@
 EXCLUDES="README.md install.sh"
-UNDOTTED="Brewfile"
+UNDOTTED="
+  Brewfile
+  Library
+  Library/LaunchAgents
+"
 COPY_ALWAYS="gnupg/gpg.conf"

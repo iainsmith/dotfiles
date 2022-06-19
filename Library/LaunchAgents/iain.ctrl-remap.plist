@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Sets a name for a task -->
+  <key>Label</key>
+  <string>iain.ctrl-remap</string>
+  <!-- Sets a command to run and its options -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>zsh</string>
+    <string>-c</string>
+    <string>$HOME/.scripts/map-right-option-to-control</string>
+  </array>
+  <!-- Tells it to run the task once the XML is loaded -->
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>

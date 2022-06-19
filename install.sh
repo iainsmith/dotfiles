@@ -37,6 +37,16 @@ function writeSwiftCompletion {
     swift package completion-tool generate-zsh-script > "$SWIFT_COMPLETION/_swift"
 }
 
+# https://github.com/quatauta/dotfiles/blob/main/setup
+_macos_launchctl_load() {
+  if command -v launchctl >/dev/null ; then
+    for PLIST in "${HOME}"/Library/LaunchAgents/*.plist ; do
+      echo launchctl lwad -w "${PLIST}"
+      launchctl load -w "${PLIST}"
+    done
+  fi
+}
+
 function printManualInstructions {
     echo "Next steps:
 - Setup an SSH key:
@@ -54,4 +64,5 @@ bootstrapXcodes
 installHomebrew
 installM1
 writeSwiftCompletion
+_macos_launchctl_load
 printManualInstructions
