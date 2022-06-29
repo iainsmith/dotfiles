@@ -1,0 +1,31 @@
+# Run an interactive rebase, automatically marking $1 to be edited
+function git_rewrite_edit() {
+  GIT_SEQUENCE_EDITOR="sed -ie 's/pick $1/edit $1/'" \
+    git rebase -i --autostash "$1^"
+}
+
+function main() {
+  # Make sure we have enough args
+  if (( $# < 1)); then
+    echo "usage: git edit <revision>" 1>&2
+    exit 1
+  fi
+
+  # Pop the revision
+  local rev="$1"
+  shift
+
+  # Look up the commit sha (allow any revision specifying syntax)
+  local commit="$(git rev-parse --short "$rev")"
+
+  # Make sure we have a valid commit
+  if [[ -z "$commit" ]]; then
+    echo "could not find rev '$rev'"
+    exit 1
+  fi
+
+  # Delegate out to the subcommand
+  git_rewrite_edit "$commit" "$@"
+}
+
+main $@

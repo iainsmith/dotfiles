@@ -10,8 +10,8 @@ export EDITOR="nvim"
 
 export GOPATH="$HOME/Developer/personal/go"
 PATH="$GOPATH/bin:$PATH"
-PATH="$PATH:/Users/iain/.local/bin"
-
+PATH="$PATH:/$HOME/.local/bin"
+PATH="$PATH:$HOME/.bin"
 cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work $HOME/Developer)
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -110,4 +110,3 @@ ensure_tmux_is_running() {
 }
 
 ensure_tmux_is_running
-
