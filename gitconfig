@@ -49,7 +49,7 @@
     prune = true
 
 [rebase]
-    autosquash = true
+	autosquash = true
 
 [includeIf "gitdir:~/Developer/work/"]
 	path = ~/Developer/work/.gitconfig-work
@@ -90,3 +90,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[rerere]
+	enabled = true
+[advice]
+	skippedCherryPicks = false
