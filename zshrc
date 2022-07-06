@@ -12,6 +12,7 @@ export GOPATH="$HOME/Developer/personal/go"
 PATH="$GOPATH/bin:$PATH"
 PATH="$PATH:/$HOME/.local/bin"
 PATH="$PATH:$HOME/.bin"
+PATH="$PATH:$HOME/.bin/git-pile/bin"
 cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work $HOME/Developer)
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
