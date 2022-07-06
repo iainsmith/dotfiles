@@ -98,6 +98,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 export GIT_PILE_PREFIX="iain/"
+export GIT_PILE_USE_PR_TEMPLATE=1
+export GIT_PILE_VERBOSE=1
 
 alias reload="source $HOME/.zshrc"
 alias gdmain="git diff origin/main --staged"
