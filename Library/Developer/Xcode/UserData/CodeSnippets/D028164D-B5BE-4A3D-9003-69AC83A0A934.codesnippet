@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>setupConfiguration</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import RiderCommon
+import Domain
+
+public final class &lt;#SetupConfigurationName#&gt;: SetupConfiguration {
+
+    public static let shared = &lt;#SetupConfigurationName#&gt;()
+
+    public let key = "&lt;#key_name#&gt;"
+    public let isEnabled = MutableReference&lt;Bool&gt;(false)
+    public let variant = MutableReference&lt;String?&gt;(nil)
+
+    // MARK: - private
+
+    private init() {}
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D028164D-B5BE-4A3D-9003-69AC83A0A934</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Setup Configuration</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
