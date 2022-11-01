@@ -50,6 +50,7 @@
 
 [rebase]
 	autosquash = true
+    updateRefs = true
 
 [includeIf "gitdir:~/Developer/work/"]
 	path = ~/Developer/work/.gitconfig-work
