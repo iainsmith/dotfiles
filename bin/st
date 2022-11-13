@@ -11,7 +11,7 @@ fzf --ansi \
 --bind "space:execute-silent(git diff --name-only --staged | grep -w {2} && git reset {2} || git add {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "r:execute(git reset --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "e:execute(nvim {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "c:execute(git commit)" \
+--bind "c:execute(git commit)+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "ctrl-r:reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind 'j:down,k:up' \
 --bind 'q:abort' \
