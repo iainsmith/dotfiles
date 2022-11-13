@@ -1,6 +1,7 @@
 export ZPLUG_HOME="$HOMEBREW_PREFIX/opt/zplug"
 source $ZPLUG_HOME/init.zsh
 
+setopt INTERACTIVE_COMMENTS
 setopt auto_cd
 setopt cdable_vars
 
@@ -13,12 +14,15 @@ PATH="$GOPATH/bin:$PATH"
 PATH="$PATH:/$HOME/.local/bin"
 PATH="$PATH:$HOME/.bin"
 PATH="$PATH:$HOME/.bin/git-pile/bin"
+PATH="$PATH:$HOME/.mint/bin"
 cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work $HOME/Developer)
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 export GEM_HOME="$HOME/.gems"
 
+zplug 'wfxr/forgit'
+zplug 'junegunn/fzf-git.sh', use:fzf-git.sh
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/rust",   from:oh-my-zsh
 zplug "plugins/macos",  from:oh-my-zsh
@@ -68,6 +72,7 @@ zplug load
 alias gls="git ls-files"
 alias gcm="git commit --message"
 alias gap="git add --patch"
+alias gaa="git forgit add"
 alias gs="git stash"
 alias gss="git stash show"
 alias gsl="git stash list"
@@ -79,6 +84,7 @@ alias gcn="git commit --verbose --no-edit --amend"
 alias gcan="git commit --verbose --all --no-edit --amend"
 alias gcnd='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
 
+
 alias tm="tmux"
 alias tmn="tmux new-session -t"
 alias tma="tmux attach -t"
@@ -89,10 +95,12 @@ alias tmc="tmux kill-session -t"
 alias ld="lazydocker"
 alias lg="lazygit"
 alias aliases="nvim ~/.dotfiles/zshrc"
+alias lsp="fd -I . --maxdepth 1 | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 source ~/.scripts/utils/utils.zsh
 source ~/.scripts/utils/tat
 PATH=$PATH:~/.scripts/utils/
+PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
@@ -104,6 +112,41 @@ export GIT_PILE_VERBOSE=1
 alias reload="source $HOME/.zshrc"
 alias gdmain="git diff origin/main --staged"
 alias gdmaster="git diff origin/master --staged"
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+FORGIT_FZF_DEFAULT_OPTS='--height 80%'
+
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS='--border --info=inline'
+
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+function gitToggle() {
+  git diff --name-only --staged | grep -w "$1" && git reset "$1" || git add "$1"
+}
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
