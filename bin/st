@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+GIT_STATUS_CMD="git -c color.status=always status --short | sort --reverse"
+PREVIEW_CMD="bat --color=always {2} 2> /dev/null || tree -C {2}"
+
+bash -c "$GIT_STATUS_CMD" | \
+fzf --ansi \
+--bind "a:execute(git add --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
+--bind "d:change-preview(git diff --name-only --staged | grep -w {2} && git diff --staged {2} | delta || git diff {2} | delta)+change-prompt(Diff Mode:)" \
+--bind "v:change-preview($PREVIEW_CMD)+change-prompt(View Mode:)" \
+--bind "space:execute-silent(git diff --name-only --staged | grep -w {2} && git reset {2} || git add {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
+--bind "r:execute(git reset --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
+--bind "e:execute(nvim {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
+--bind "c:execute(git commit)" \
+--bind "ctrl-r:reload(bash -c \"$GIT_STATUS_CMD\")" \
+--bind 'j:down,k:up' \
+--bind 'q:abort' \
+--bind 'ctrl-b:preview-page-up,ctrl-d:preview-page-down' \
+--reverse \
+--preview "$PREVIEW_CMD" \
+--preview-window 'right,75%' \
+--prompt "View Mode:" \
+--height 100% \
+--header "v:view, d:diff" \
+--header-first
