@@ -49,10 +49,14 @@ defaults write com.apple.dt.Xcode DVTTextIndentWidth -int 4
 
 defaults write com.apple.dt.Xcode DVTTextAlignConsecutiveSlashSlashComments -bool true
 defaults write com.apple.dt.Xcode DVTTextIndentOnPaste -bool true
-defaults write com.apple.dt.Xcode DKeyBindingsMode -string "Vi" 
+defaults write com.apple.dt.Xcode DKeyBindingsMode -string "Vi"
 
 defaults write com.apple.dt.Xcode "IDEAdditionalCounterpartSuffixes" -array-add "Tests" "Error" "ViewModel" "Coordinator"
 
+defaults write com.apple.dt.Xcode IDESourceControlRemoteStatusFetchingEnabled -bool false
+defaults write com.apple.dt.Xcode IDESourceControlLocalStatusCheckingEnabled -bool false
+defaults write com.apple.dt.Xcode IDESourceControlAutomaticallyAddNewFiles -bool false
+defaults write com.apple.dt.Xcode IDESourceControlPreselectCommitSheetFiles -bool false
 # Options I might want to try in the future
 
 # Open quickly opens in the focused pane

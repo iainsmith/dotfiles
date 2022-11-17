@@ -1,0 +1,5 @@
+source "$(dirname "$0")/../.scripts/utils/git-fzf.sh"
+
+hash=$(_fzf_git_hashes)
+echo $hash
+[ -n "$hash" ] && git rebasepr $hash $@ || echo "No commit selected"

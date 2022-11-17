@@ -22,20 +22,15 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " automatically resize windows on vim resize
 autocmd VimResized * :wincmd =
-" Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Leader mapping
 let mapleader = " " " map leader to Space
 
 noremap ; :
-nnoremap <leader>0 :NERDTreeToggle<CR>
+nnoremap <leader>0 :NvimTreeToggle<CR>
+nnoremap <C-j> :NvimTreeFindFile<CR>
 nnoremap <leader>o :GitFiles<CR>
+nnoremap <leader>k :Commands<CR>
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 nnoremap <Leader>x :q<CR>
@@ -60,8 +55,12 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
   Plug 'tpope/vim-obsession'
 
   Plug 'EdenEast/nightfox.nvim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
-  Plug 'preservim/nerdtree'
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'nvim-tree/nvim-tree.lua'
+
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'airblade/vim-gitgutter'
@@ -98,6 +97,32 @@ let g:airline_symbols_ascii = 1
 lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
+
+-- set termguicolors to enable highlight groups
+  vim.opt.termguicolors = true
+
+-- empty setup using defaults
+  require("nvim-tree").setup( {
+      open_on_setup_file = true,
+       prefer_startup_root = true,
+      renderer = {
+            icons = {
+                show = {
+                    file = true,
+                    folder = true,
+                    folder_arrow = true,
+                    git = true,
+                }
+            }
+        },
+    update_focused_file = {
+        enable = true,
+        update_root = true,
+    }
+  })
 
   cmp.setup({
     snippet = {

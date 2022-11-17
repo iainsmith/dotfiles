@@ -1,7 +1,6 @@
 export ZPLUG_HOME="$HOMEBREW_PREFIX/opt/zplug"
 source $ZPLUG_HOME/init.zsh
 
-setopt INTERACTIVE_COMMENTS
 setopt auto_cd
 setopt cdable_vars
 
@@ -9,6 +8,7 @@ unsetopt BEEP
 
 export EDITOR="nvim"
 
+export BAT_THEME=OneHalfDark
 export GOPATH="$HOME/Developer/personal/go"
 PATH="$GOPATH/bin:$PATH"
 PATH="$PATH:/$HOME/.local/bin"
@@ -17,12 +17,16 @@ PATH="$PATH:$HOME/.bin/git-pile/bin"
 PATH="$PATH:$HOME/.mint/bin"
 cdpath=($HOME $HOME/Developer/personal $HOME/Developer/work $HOME/Developer)
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+export FZF_COMPLETION_OPTS="--tiebreak=chunk"
+
+alias vim=nvim
 
 export GEM_HOME="$HOME/.gems"
 
+zplug 'zsh-users/zsh-completions'
 zplug 'wfxr/forgit'
-zplug 'junegunn/fzf-git.sh', use:fzf-git.sh
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/rust",   from:oh-my-zsh
 zplug "plugins/macos",  from:oh-my-zsh
@@ -41,8 +45,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zstyle :prompt:pure:path color white
 zstyle :prompt:pure:git:stash show yes
 
-zplug 'mafredri/zsh-async', from:github
-zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 if ! zplug check --verbose; then
     zplug install
@@ -98,6 +102,7 @@ alias aliases="nvim ~/.dotfiles/zshrc"
 alias lsp="fd -I . --maxdepth 1 | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 source ~/.scripts/utils/utils.zsh
+source ~/.scripts/utils/git-fzf.sh
 source ~/.scripts/utils/tat
 PATH=$PATH:~/.scripts/utils/
 PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
@@ -113,31 +118,20 @@ alias reload="source $HOME/.zshrc"
 alias gdmain="git diff origin/main --staged"
 alias gdmaster="git diff origin/master --staged"
 
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
-FORGIT_FZF_DEFAULT_OPTS='--height 80%'
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --bind 'j:down,k:up'"
+export FORGIT_FZF_DEFAULT_OPTS='--height 80%'
 
-# Use ~~ as the trigger sequence instead of the default **
-export FZF_COMPLETION_TRIGGER='~~'
 
-# Options to fzf command
-export FZF_COMPLETION_OPTS='--border --info=inline'
-
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
+export FORGIT_LOG_FZF_OPTS='
+--bind "j:down,k:up,q:abort"
+--bind "ctrl-b:preview-page-up,ctrl-d:preview-page-down"
+--height 100%
+'
 
 function gitToggle() {
   git diff --name-only --staged | grep -w "$1" && git reset "$1" || git add "$1"
 }
+
 
 # disable sort when completing `git checkout`
 zstyle ':completion:*:git-checkout:*' sort false
@@ -145,8 +139,18 @@ zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 # preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:bat:*' fzf-preview 'bat --color=always $realpath || tree -d 1 $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
+zstyle :compinstall filename '/Users/iain/.zshrc'
+
+FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
+autoload -Uz compinit
+compinit
+
+enable-fzf-tab
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 

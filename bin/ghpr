@@ -1,0 +1,17 @@
+
+CMD="GH_FORCE_TTY='50%' gh pr view {1} --comments"
+GH_FORCE_TTY='50%' gh pr list \
+| fzf --height 100% --ansi --header-lines 3 \
+--preview "$CMD" \
+--bind 'o:execute(gh pr view --web {1})' \
+--bind 'j:down,k:up' \
+--bind 'q:abort' \
+--bind 'd:change-preview(GH_FORCE_TTY="50%" gh pr diff {1})' \
+--bind 's:change-preview(GH_FORCE_TTY="50%" gh pr checks {1})' \
+--bind "v:change-preview($CMD)" \
+--bind "ctrl-a:execute(gh pr --approve --approve {1})+reload($CMD)" \
+--bind '/:change-preview-window(96%|)' \
+--bind 'ctrl-b:preview-page-up,ctrl-d:preview-page-down' \
+--bind 'j:down,k:up' \
+--header "v:view, d:diff, s:status, o:open, /:expand, ctrl+a:approve" \
+| gawk '{print $1}'

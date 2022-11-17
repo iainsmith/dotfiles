@@ -1,0 +1,5 @@
+source "$(dirname "$0")/../.scripts/utils/git-fzf.sh"
+
+# Fixes up the latest commit that contained the first file in this change
+hash=$(git diff --staged --name-only | head | xargs git log --oneline | gawk '{print $1}')
+[ -n "$hash" ] && git commit --fixup $hash && git -c sequence.editor=: rebase --autosquash --interactive origin/master || echo "No commit selected"

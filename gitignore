@@ -1,4 +1,5 @@
 *.pyc
+third_party
 *.sw[nop]
 .DS_Store
 .bundle
