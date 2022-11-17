@@ -1,9 +1,17 @@
 if git diff --name-only --staged | grep "$1" -wq
 then
+    echo "====STAGED===="
     git diff --staged "$1" | delta
+    if git diff --name-only | grep "$1" -wq
+    then
+        echo "\n====UNSTAGED===="
+       git diff "$1" | delta
+    fi
 elif git diff --name-only | grep "$1" -wq
 then
+    echo "\n====UNSTAGED===="
    git diff "$1" | delta
 else
+    echo "\n====UNSTAGED===="
     bat --color=always "$1"
 fi
