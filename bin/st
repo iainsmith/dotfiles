@@ -3,11 +3,12 @@
 GIT_STATUS_CMD="git -c color.status=always status --short | sort-git-status.py"
 FILENAME="echo {} | cut -c4- | xargs "
 PREVIEW_CMD="$FILENAME bat --color=always 2> /dev/null || tree -C {2}"
+DIFF_CMD="$FILENAME gdiff || tree -C {2}"
 
 bash -c "$GIT_STATUS_CMD" | \
 fzf --ansi \
 --bind "a:execute(git add --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "d:change-preview(git diff --name-only --staged | ($FILENAME grep -w) && git diff --staged | delta || ($FILENAME git diff) | delta || bat --color=always $FILENAME)+change-prompt(Diff Mode:)" \
+--bind "d:change-preview(gdiff '{2}')+change-prompt(Diff Mode:)" \
 --bind "v:change-preview($PREVIEW_CMD)+change-prompt(View Mode:)" \
 --bind "space:execute-silent(git diff --name-only --staged | grep -w '{2}' && git reset '{2}' || git add '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "r:execute($FILENAME git reset --patch)+reload(bash -c \"$GIT_STATUS_CMD\")" \
@@ -18,9 +19,9 @@ fzf --ansi \
 --bind 'q:abort' \
 --bind 'ctrl-b:preview-page-up,ctrl-d:preview-page-down' \
 --reverse \
---preview "$PREVIEW_CMD" \
+--preview "$DIFF_CMD" \
 --preview-window 'right,75%' \
---prompt "View Mode:" \
+--prompt "Diff Mode:" \
 --height 100% \
 --header "v:view, d:diff" \
 --header-first

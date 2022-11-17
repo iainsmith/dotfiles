@@ -1,0 +1,9 @@
+if git diff --name-only --staged | grep "$1" -wq
+then
+    git diff --staged "$1" | delta
+elif git diff --name-only | grep "$1" -wq
+then
+   git diff "$1" | delta
+else
+    bat --color=always "$1"
+fi
