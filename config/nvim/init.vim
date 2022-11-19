@@ -2,7 +2,6 @@ set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
-set number
 set smartindent
 set hlsearch
 set ignorecase
@@ -196,7 +195,9 @@ lua <<EOF
     capabilities = capabilities
   }
 
-  ---require('lspconfig')['gopls'].setup {
-   --- capabilities = capabilities
- --- }
+ path = os.getenv( "HOME" )
+ path = path .. "/.config/nvim/?.lua"
+ path = ";" .. path
+ package.path = package.path .. path
+ require('lua.init')
 EOF
