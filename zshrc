@@ -10,6 +10,7 @@ export EDITOR="nvim"
 
 export BAT_THEME=OneHalfDark
 export GOPATH="$HOME/Developer/personal/go"
+export LUA_PATH="$HOME/.config/nvim/lua:$LUA_PATH"
 PATH="$GOPATH/bin:$PATH"
 PATH="$PATH:/$HOME/.local/bin"
 PATH="$PATH:$HOME/.bin"
