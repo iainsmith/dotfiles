@@ -23,8 +23,6 @@ export FZF_COMPLETION_OPTS="--tiebreak=chunk"
 
 alias vim=nvim
 
-export GEM_HOME="$HOME/.gems"
-
 zplug 'zsh-users/zsh-completions'
 zplug 'wfxr/forgit'
 zplug "plugins/git",    from:oh-my-zsh
@@ -83,6 +81,7 @@ alias gsl="git stash list"
 alias gsa="git stash apply"
 alias gsk="git stash --keep"
 alias grsp="git restore --patch"
+unalias grs
 alias grstp="git restore --staged --patch"
 alias gcn="git commit --verbose --no-edit --amend"
 alias gcan="git commit --verbose --all --no-edit --amend"

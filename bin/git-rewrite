@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #!/bin/env zsh
 
 # Run an interactive rebase, automatically marking $1 to be reworded

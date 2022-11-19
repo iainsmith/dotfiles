@@ -1,0 +1,6 @@
+
+if git ls-files --other --directory --exclude-standard | grep -w "$1" -q; then
+    rm "$1"
+else
+    git restore "$1"
+fi

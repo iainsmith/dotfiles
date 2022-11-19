@@ -5,6 +5,8 @@ FILENAME="echo {} | cut -c4- | xargs "
 PREVIEW_CMD="$FILENAME bat --color=always 2> /dev/null || tree -C {2}"
 DIFF_CMD="$FILENAME gdiff || tree -C {2}"
 
+tmux split-window -d "git forgit log"
+
 bash -c "$GIT_STATUS_CMD" | \
 fzf --ansi \
 --bind "a:execute(git add --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
@@ -15,8 +17,9 @@ fzf --ansi \
 --bind "e:execute(nvim '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "c:execute(git commit)+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "ctrl-r:reload(bash -c \"$GIT_STATUS_CMD\")" \
+--bind "R:execute-silent(grs '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind 'j:down,k:up' \
---bind 'q:abort' \
+--bind 'q:execute-silent(tmux kill-pane -t 2)+abort' \
 --bind 'ctrl-b:preview-page-up,ctrl-d:preview-page-down' \
 --reverse \
 --preview "$DIFF_CMD" \
@@ -25,3 +28,4 @@ fzf --ansi \
 --height 100% \
 --header "v:view, d:diff" \
 --header-first
+
