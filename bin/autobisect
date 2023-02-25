@@ -1,0 +1,43 @@
+#!/bin/bash
+set -x
+
+POSITIONAL_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -g|--good)
+      GOOD="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -b|--bad)
+      BAD="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      POSITIONAL_ARGS+=("$1") # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
+
+echo "GOOD COMMIT  = ${GOOD}"
+echo "BAD COMMIT   = ${BAD}"
+
+if [[ -z "${GOOD}" || -z "${BAD}" ]]; then
+    echo "Didn't set --good or --bad"
+    exit 1
+fi
+
+
+git bisect start
+git bisect good "$GOOD"
+git bisect bad "$BAD"
+git bisect run "$1"

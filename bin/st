@@ -8,7 +8,7 @@ DIFF_CMD="$FILENAME gdiff || tree -C {2}"
 tmux split-window -d "git forgit log"
 
 bash -c "$GIT_STATUS_CMD" | \
-fzf --ansi \
+fzf-tmux -p 100% --ansi \
 --bind "a:execute(git add --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
 --bind "d:change-preview(gdiff '{2}')+change-prompt(Diff Mode:)" \
 --bind "v:change-preview($PREVIEW_CMD)+change-prompt(View Mode:)" \

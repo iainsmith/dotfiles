@@ -25,10 +25,11 @@ export FZF_COMPLETION_OPTS="--tiebreak=chunk"
 alias vim=nvim
 
 zplug 'zsh-users/zsh-completions'
-zplug 'wfxr/forgit'
+zplug 'wfxr/forgit',    from:github
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/rust",   from:oh-my-zsh
 zplug "plugins/macos",  from:oh-my-zsh
+zplug "plugins/sdk",    from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "keith/zsh-xcode-completions", use:"src"
@@ -83,10 +84,12 @@ alias gsa="git stash apply"
 alias gsk="git stash --keep"
 alias grsp="git restore --patch"
 unalias grs
+alias gupx="git pull --rebase -X theirs"
 alias grstp="git restore --staged --patch"
 alias gcn="git commit --verbose --no-edit --amend"
 alias gcan="git commit --verbose --all --no-edit --amend"
 alias gcnd='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
+unalias glog
 
 
 alias tm="tmux"
@@ -105,6 +108,7 @@ source ~/.scripts/utils/utils.zsh
 source ~/.scripts/utils/git-fzf.sh
 source ~/.scripts/utils/tat
 PATH=$PATH:~/.scripts/utils/
+PATH="$PATH:$(brew --prefix)/opt/zplug/repos/wfxr/forgit/bin"
 PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -146,7 +150,22 @@ zstyle ':completion:*' completer _expand _complete _ignored _correct _approximat
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
 zstyle :compinstall filename '/Users/iain/.zshrc'
 
+
+_fzf_git_fzf() {
+  fzf-tmux -p100% -- \
+    --layout=reverse --multi --height=100% --min-height=20 --border \
+    --color='header:italic:underline' \
+    --preview-window='right,50%,border-left' \
+    --bind "j:down,k:up,q:abort" \
+    --bind='ctrl-/:change-preview-window(down,50%,border-top|hidden|)' \
+    "$@"
+}
+
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+
 FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
+
 autoload -Uz compinit
 compinit
 
@@ -161,3 +180,4 @@ ensure_tmux_is_running() {
 }
 
 ensure_tmux_is_running
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

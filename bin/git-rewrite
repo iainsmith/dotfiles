@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 
 # Run an interactive rebase, automatically marking $1 to be reworded
 function git_rewrite_reword() {
@@ -46,9 +46,11 @@ function git_rewrite_move-forward() {
     git rebase -i --autostash --autosquash "$1^"
 }
 
+source "$(dirname "$0")/../.scripts/utils/git-fzf.sh"
+
 function main() {
   # Make sure we have enough args
-  if (( $# < 2)); then
+  if (( $# < 1)); then
     echo "usage: git rewrite <subcommand> <revision>" 1>&2
     exit 1
   fi
@@ -64,7 +66,7 @@ function main() {
   fi
 
   # Pop the revision
-  local rev="$1"
+  local rev=$(_fzf_git_hashes)
   shift
 
   # Look up the commit sha (allow any revision specifying syntax)

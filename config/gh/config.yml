@@ -10,6 +10,7 @@ pager:
 aliases:
     co: pr checkout
     rc: repo clone
+    prl: pr list --json number,title,author,reviewDecision,mergeStateStatus,createdAt,additions,deletions --template '{{range .}}{{tablerow .number (printf "%v" .author.login | autocolor "green") .title (.reviewDecision | autocolor "cyan") (.mergeStateStatus | autocolor "yellow") (timeago .createdAt) (printf "+%v -%v" .additions .deletions) }}{{end}}'
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.

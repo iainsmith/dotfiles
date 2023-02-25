@@ -1,8 +1,9 @@
 
-CMD="GH_FORCE_TTY='50%' gh pr view {1} --comments"
-GH_FORCE_TTY='50%' gh pr list \
-| fzf --height 100% --ansi --header-lines 3 \
+CMD="GH_FORCE_TTY='90%' gh pr view {1} --comments"
+GH_FORCE_TTY='90%' gh prl \
+| fzf-tmux -p 100% --height 80% --ansi \
 --preview "$CMD" \
+--preview-window "down,80%" \
 --bind 'o:execute(gh pr view --web {1})' \
 --bind 'j:down,k:up' \
 --bind 'q:abort' \
