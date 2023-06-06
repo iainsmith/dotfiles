@@ -1,5 +1,6 @@
 export ZPLUG_HOME="$HOMEBREW_PREFIX/opt/zplug"
 source $ZPLUG_HOME/init.zsh
+source "$HOME/Developer/.secrets" 2> /dev/null
 
 setopt auto_cd
 setopt cdable_vars
@@ -26,6 +27,7 @@ alias vim=nvim
 
 zplug 'zsh-users/zsh-completions'
 zplug 'wfxr/forgit',    from:github
+zplug "bigH/git-fuzzy", as:command, use:"bin/git-fuzzy"
 zplug "plugins/git",    from:oh-my-zsh
 zplug "plugins/rust",   from:oh-my-zsh
 zplug "plugins/macos",  from:oh-my-zsh
@@ -113,6 +115,7 @@ PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 export GIT_PILE_PREFIX="iain/"
 export GIT_PILE_USE_PR_TEMPLATE=1
