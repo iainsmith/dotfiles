@@ -32,7 +32,7 @@
 	# --track by default
 	autosetupmerge = always
 	autoSetupRebase = always
-	sort = -committerdate # Most recent first
+	sort = -committerdate
 
 [push]
 	default = current
