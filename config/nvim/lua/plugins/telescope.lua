@@ -10,8 +10,17 @@ return {
         desc = "Find Plugin File",
       },
     },
+
+    dependencies = {
+      { "nvim-telescope/telescope-ui-select.nvim" },
+    },
     -- change some options
     opts = {
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
+      },
       defaults = {
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },

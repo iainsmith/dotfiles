@@ -14,7 +14,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-emoji",
-      "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "tamago324/cmp-zsh",
       "hrsh7th/cmp-buffer",
@@ -34,7 +33,6 @@ return {
       table.insert(opts.sources, { name = "emoji", group_index = 1 })
       table.insert(opts.sources, { name = "git", group_index = 1 })
       table.insert(opts.sources, { name = "cmdline", group_index = 1 })
-      table.insert(opts.sources, { name = "nvim_lua", group_index = 1 })
       table.insert(opts.sources, { name = "zsh" })
       table.insert(opts.sources, { name = "buffer", group_index = 2 })
       -- opts.sources = {

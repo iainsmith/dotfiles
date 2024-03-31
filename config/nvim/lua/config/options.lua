@@ -15,3 +15,7 @@ opt.softtabstop = indent
 opt.tabstop = indent
 opt.autoindent = true
 opt.smartindent = true -- Autoindent new lines
+
+opt.undofile = true -- Save undo history
+opt.timeoutlen = 300
+opt.swapfile = false -- Don't use swapfile
