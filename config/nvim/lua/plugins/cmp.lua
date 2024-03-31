@@ -12,7 +12,6 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-emoji",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "tamago324/cmp-zsh",
@@ -28,23 +27,13 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
-      table.insert(opts.sources, { name = "nvim_lsp", group_index = 1 })
+      -- table.insert(opts.sources, { name = "nvim_lsp", group_index = 1 })
       -- table.insert(opts.sources, { name = "nvim_lsp_signature_help", group_index = 1 })
       table.insert(opts.sources, { name = "emoji", group_index = 1 })
       table.insert(opts.sources, { name = "git", group_index = 1 })
       table.insert(opts.sources, { name = "cmdline", group_index = 1 })
       table.insert(opts.sources, { name = "zsh" })
       table.insert(opts.sources, { name = "buffer", group_index = 2 })
-      -- opts.sources = {
-      --
-      --   { name = "nvim_lsp" },
-      --   { name = "copilot" },
-      --   { name = "buffer" },
-      --   { name = "emoji" },
-      --   { name = "neodev" },
-      --   { name = "luasnip" },
-      --   { name = "path" },
-      -- }
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
