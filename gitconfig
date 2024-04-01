@@ -50,6 +50,15 @@
 [fetch]
     prune = true
 
+[diff]
+  tool = nvimdiff
+  renames = copies
+  algorithm = histogram
+  indentHeuristic = true
+
+[alias]
+  mergetool = "!nvim -c DiffviewOpen"
+
 [rebase]
 	autosquash = true
     updateRefs = true
@@ -86,10 +95,15 @@
 
 
 [merge]
-	tool = opendiff
+	tool = nvimdiff
 
-[mergetool "opendiff"]
+[mergetool]
+	keepBackup = false
+	prompt = false
+
+[mergetool "nvimdiff"]
 	trustExitCode = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -97,6 +111,7 @@
 	required = true
 [rerere]
 	enabled = true
+	autoupdate = true
 [advice]
 	skippedCherryPicks = false
 [difftool "sourcetree"]
