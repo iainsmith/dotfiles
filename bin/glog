@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# GIT_STATUS_CMD="git log --oneline --color=always --decorate"
+GIT_STATUS_CMD="git log --pretty='%C(yellow)%h|%C(cyan)%<(12,trunc)%cd|%Cgreen%aN|%C(auto)%d %Creset%s' --date=relative --color=always | column -ts'|'"
+FILENAME="echo {} | cut -f1 -d ' ' | xargs "
+PREVIEW_CMD="$FILENAME git show --color=always --abbrev "
+
+bash -c "$GIT_STATUS_CMD" |
+  fzf-tmux -p 100% --ansi \
+    --bind 'load:rebind(j)+rebind(k)+rebind(i)+rebind(q)+change-prompt(Browse mode> )' \
+    --reverse \
+    --preview "$PREVIEW_CMD" \
+    --preview-window 'bottom,75%' \
+    --height 100%

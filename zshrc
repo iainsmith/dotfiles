@@ -8,6 +8,7 @@ setopt cdable_vars
 unsetopt BEEP
 
 export EDITOR="nvim"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export BAT_THEME=OneHalfDark
 export GOPATH="$HOME/Developer/personal/go"
@@ -125,7 +126,10 @@ alias reload="source $HOME/.zshrc"
 alias gdmain="git diff origin/main --staged"
 alias gdmaster="git diff origin/master --staged"
 
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --bind 'j:down,k:up'"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --bind j:down,k:up,q:abort --bind 'start:unbind(j)+unbind(k)+unbind(i)+unbind(q)' \
+  --bind 'esc:rebind(j)+rebind(k)+rebind(i)+rebind(q)+change-prompt(Browse mode> )' \
+  --bind 'i:unbind(j)+unbind(k)+unbind(i)+unbind(q)+change-prompt(> )' \
+  --bind 'ctrl-b:preview-page-up,ctrl-d:preview-page-down'"
 export FORGIT_FZF_DEFAULT_OPTS='--height 80%'
 
 

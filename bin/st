@@ -5,27 +5,22 @@ FILENAME="echo {} | cut -c4- | xargs "
 PREVIEW_CMD="$FILENAME bat --color=always 2> /dev/null || tree -C {2}"
 DIFF_CMD="$FILENAME gdiff || tree -C {2}"
 
-tmux split-window -d "git forgit log"
-
-bash -c "$GIT_STATUS_CMD" | \
-fzf-tmux -p 100% --ansi \
---bind "a:execute(git add --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "d:change-preview(gdiff '{2}')+change-prompt(Diff Mode:)" \
---bind "v:change-preview($PREVIEW_CMD)+change-prompt(View Mode:)" \
---bind "space:execute-silent(git diff --name-only --staged | grep -w '{2}' && git reset '{2}' || git add '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "r:execute($FILENAME git reset --patch)+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "e:execute(nvim '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "c:execute(git commit)+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "ctrl-r:reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind "R:execute-silent(grs '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
---bind 'j:down,k:up' \
---bind 'q:execute-silent(tmux kill-pane -t 2)+abort' \
---bind 'ctrl-b:preview-page-up,ctrl-d:preview-page-down' \
---reverse \
---preview "$DIFF_CMD" \
---preview-window 'right,75%' \
---prompt "Diff Mode:" \
---height 100% \
---header "v:view, d:diff" \
---header-first
-
+bash -c "$GIT_STATUS_CMD" |
+  fzf-tmux -p 100% --ansi \
+    --bind 'load:rebind(j)+rebind(k)+rebind(i)+rebind(q)+change-prompt(Browse mode> )' \
+    --bind "a:execute(git add --patch {2})+reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --bind "d:change-preview(gdiff '{2}')+change-prompt(Diff Mode:)" \
+    --bind "v:change-preview($PREVIEW_CMD)+change-prompt(View Mode:)" \
+    --bind "space:execute-silent(git diff --name-only --staged | grep -w '{2}' && git reset '{2}' || git add '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --bind "r:execute($FILENAME git reset --patch)+reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --bind "e:execute(nvim '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --bind "c:execute(git commit)+reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --bind "ctrl-r:reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --bind "R:execute-silent(grs '{2}')+reload(bash -c \"$GIT_STATUS_CMD\")" \
+    --reverse \
+    --preview "$DIFF_CMD" \
+    --preview-window 'right,75%' \
+    --prompt "Diff Mode:" \
+    --height 100% \
+    --header "v:view, d:diff" \
+    --header-first

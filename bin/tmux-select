@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Only show the last path component in fzf
+DIRS="$HOME/Developer/work $HOME/Developer/personal $HOME"
+find "$DIRS" -maxdepth 1 -mindepth 1 -type d | fzf-tmux -p \
+  --preview 'tree -C {} | head -n 10' \
+  --delimiter / --with-nth -1 |
+  xargs tmux-find-or-create
