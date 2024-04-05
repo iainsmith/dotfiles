@@ -1,0 +1,14 @@
+gui:
+  scrollHeight: 16
+# git:
+#   paging:
+#     colorArg: always
+#     pager: delta --dark --paging=never --syntax-theme base16-256 -s --diff-so-fancy
+git:
+  paging:
+    externalDiffCommand: difft --color=always
+keybinding:
+  universal:
+    scrollUpMain-alt2: "<c-b>"
+  files:
+    openStatusFilter: "<c-a>"
