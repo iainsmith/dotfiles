@@ -1,5 +1,16 @@
 return {
   {
+    "iainsmith/telescope-spm.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    dir = "~/Developer/personal/telescope-spm.nvim",
+    config = function()
+      require("telescope").load_extension("spm")
+      require("telescope_spm").setup({})
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     keys = {
       {
@@ -26,6 +37,11 @@ return {
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         path_display = { "truncate" },
+        mappings = {
+          n = {
+            ["C-b"] = "preview_scrolling_up",
+          },
+        },
       },
     },
   },
