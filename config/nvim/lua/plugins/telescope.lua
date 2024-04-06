@@ -1,3 +1,5 @@
+local actions = require("telescope.actions")
+
 return {
   {
     "iainsmith/telescope-spm.nvim",
@@ -38,8 +40,13 @@ return {
         sorting_strategy = "ascending",
         path_display = { "truncate" },
         mappings = {
+          i = {
+            ["C-b"] = "preview_scrolling_up",
+            ["<C-s>"] = actions.cycle_previewers_next,
+          },
           n = {
             ["C-b"] = "preview_scrolling_up",
+            ["<C-s>"] = actions.cycle_previewers_next,
           },
         },
       },
