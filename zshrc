@@ -93,6 +93,7 @@ alias gcn="git commit --verbose --no-edit --amend"
 alias gcan="git commit --verbose --all --no-edit --amend"
 alias gcnd='GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"'
 unalias glog
+unalias gg
 
 
 alias tm="tmux"
