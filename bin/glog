@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # GIT_STATUS_CMD="git log --oneline --color=always --decorate"
-GIT_STATUS_CMD="git log --pretty='%C(yellow)%h|%C(cyan)%<(12,trunc)%cd|%Cgreen%aN|%C(auto)%d %Creset%s' --date=relative --color=always | column -ts'|'"
+GIT_STATUS_CMD="git log --pretty='%C(yellow)%h|%C(cyan)%<(12,trunc)%cd|%Cgreen%<(12,trunc)%aN|%C(auto)%d %Creset%s' --date=relative --color=always | column -ts'|'"
 FILENAME="echo {} | cut -f1 -d ' ' | xargs "
 PREVIEW_CMD="$FILENAME git show --color=always --abbrev "
 
