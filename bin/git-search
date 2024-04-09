@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -x
+SEARCH_TERM=$1
+# The remaining args
+REMAINING_ARGS=${*:2}
+
+# Use getopt to parse --language value
+while [[ $# -gt 0 ]]; do
+  key="$1"
+  case $key in
+  --language)
+    LANGUAGE="--language $2"
+    shift # past argument
+    shift # past value
+    ;;
+  *)      # unknown option
+    shift # past argument
+    ;;
+  esac
+done
+
+# if search_term is empty
+if [[ -z $SEARCH_TERM ]]; then
+  echo "Usage: git-search <search-term>"
+  exit 1
+fi
+
+echo "searching for $SEARCH_TERM $REMAINING_ARGS"
+
+gh search code "$SEARCH_TERM" \
+  --json repository,path \
+  $REMAINING_ARGS \
+  --jq '.[] | [.repository.nameWithOwner, .path] | @tsv' |
+  fzf-tmux -p -w 90% -h 90% --delimiter '\t' \
+    --preview "gh api --cache 10m repos/{1}/contents/{2} \
+                        --jq .content | base64 --decode | bat $LANGUAGE --color=always --number" \
+    --preview-window 'nohidden:right:wrap:75%' \
+    --bind 'ctrl-o:execute-silent:gh browse --repo {1} {2}'
