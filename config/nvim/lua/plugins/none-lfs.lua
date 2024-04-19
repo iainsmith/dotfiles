@@ -15,6 +15,7 @@ return {
       nls.builtins.formatting.black,
       nls.builtins.diagnostics.markdownlint_cli2,
       nls.builtins.formatting.mdformat,
+      nls.builtins.formatting.ktlint,
     })
   end,
 }

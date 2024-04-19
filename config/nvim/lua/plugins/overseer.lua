@@ -1,10 +1,14 @@
+vim.opt.path:append("~/Developer/personal/overseer.nvim/doc/")
+
 return {
   "stevearc/overseer.nvim",
+  keys = { { "<leader>cb", "<cmd>OverseerToggle<cr>", desc = "Toggle Builds" } },
   dir = "~/Developer/personal/overseer.nvim",
   config = function()
     local overseer = require("overseer")
     overseer.setup({
       task_list = {
+        direction = "bottom",
         default_detail = 2,
         bindings = {
           ["?"] = "ShowHelp",

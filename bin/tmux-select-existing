@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
 #
 # Only show the last path component in fzf
 tmux list-sessions |
   sed -E 's/:.*$//' |
   grep -v \"^"$(tmux display-message -p '#S')"\$\" |
-  fzf-tmux -p |
+  fzf-tmux -p \
+    --reverse |
   xargs tmux switch-client -t

@@ -8,7 +8,7 @@ return {
     },
     dir = "~/Developer/personal/telescope-spm.nvim",
     config = function()
-      require("telescope").load_extension("spm")
+      require("telescope").load_extension("swift")
       require("telescope_spm").setup({})
     end,
   },
@@ -26,6 +26,13 @@ return {
 
     dependencies = {
       { "nvim-telescope/telescope-ui-select.nvim" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        config = function()
+          require("telescope").load_extension("fzf")
+        end,
+      },
     },
     -- change some options
     opts = {
