@@ -11,3 +11,11 @@ n_keymap("<leader>x", ":q", "Quit")
 n_keymap("<leader>bq", "<cmd>lua require('mini.bufremove').delete()<CR>", "Delete Buffer")
 n_keymap("<leader>o", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>", "Find Files")
 n_keymap("<leader>wq", "<C-W>q", "Close Window")
+
+local wk = require("which-key")
+
+wk.register({
+  cx = {
+    name = "Xcode",
+  },
+}, { prefix = "<leader>" })

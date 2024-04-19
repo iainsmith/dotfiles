@@ -7,6 +7,11 @@ return {
     "stevearc/oil.nvim", -- (optional) to manage project files
     "nvim-treesitter/nvim-treesitter", -- (optional) for Quick tests support (required Swift parser)
   },
+  lazy = false,
+  keys = {
+    { "<leader>cxb", "<cmd>XcodebuildBuild<CR>", desc = "Xcode Build" },
+    { "<leader>cxt", "<cmd>XcodebuildTest<CR>", desc = "Xcode Test" },
+  },
   config = function()
     require("xcodebuild").setup({
       -- put some options here or leave it empty to use default settings
