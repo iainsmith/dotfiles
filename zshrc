@@ -10,6 +10,8 @@ unsetopt BEEP
 export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export ANDROID_HOME=~/Library/Android/sdk
+
 export BAT_THEME=OneHalfDark
 export GOPATH="$HOME/Developer/personal/go"
 export LUA_PATH="$HOME/.config/nvim/lua:$LUA_PATH"
@@ -157,6 +159,11 @@ zstyle ':fzf-tab:*' switch-group ',' '.'
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
 zstyle :compinstall filename '/Users/iain/.zshrc'
+compdef _bazel bazelisk
+compdef _bazel bz
+compdef _swift swift
+compdef _gnu_generic fzf
+compdef _gnu_generic tree
 
 
 _fzf_git_fzf() {
@@ -172,8 +179,8 @@ _fzf_git_fzf() {
 export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
-FPATH=$FPATH:/opt/homebrew/share/zsh/site-functions
-
+FPATH=$HOME/.scripts/zsh:$FPATH:/opt/homebrew/share/zsh/site-functions
+unfunction _swift # Not really sure why this is necessary
 autoload -Uz compinit
 compinit
 
@@ -189,3 +196,4 @@ ensure_tmux_is_running() {
 
 ensure_tmux_is_running
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export KEYTIMEOUT=1
