@@ -13,3 +13,6 @@ export N_PREFIX="$HOME/.n"
 PATH="$HOME/.n/bin":$PATH
 
 export PATH="$PATH:/Users/iain/.local/bin"
+
+# Added by swiftly
+. "/Users/iain/Library/Application Support/swiftly/env.sh"
