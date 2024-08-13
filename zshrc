@@ -55,6 +55,7 @@ alias lt="lsd --tree"
 
 # Bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export BAT_THEME="Monokai Extended"
 alias cat="bat"
 
 eval "$(rbenv init - zsh)"
