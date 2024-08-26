@@ -1,9 +1,8 @@
 path=$1
 name=$(basename "$path")
 if tmux list-sessions -F '#S' | grep -q "$name"; then
-  # replace . with - in $name
-  name=$(echo "$name" | tr '.' '-')
   tmux switch-client -t "$name"
 else
   TMUX='' tmux new-session -Ad -s "$name" -c "$path"
+  tmux switch-client -t "$name"
 fi
