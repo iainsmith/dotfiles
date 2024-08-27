@@ -16,3 +16,4 @@ log/*.log
 rerun.txt
 tmp/**/*
 /tags
+**/*/kls_database.db
